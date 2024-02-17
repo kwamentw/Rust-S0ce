@@ -187,8 +187,73 @@ fn main() {
     greet();
     print_number(5233);
     print_numbers(23, 44, 23.45333);
+
+    let result: u32 = add_numbers(23, 44);
+    println!("the sum is: {} ", result);
+
+    let diff: i32 = subt_numbers(2345, 22);
+    println!("The difference is {}", diff);
+
+    //implementation
+    struct Rectangle {
+        width: u32,
+        height: u32,
+    }
+    impl Rectangle {
+        fn area(&self) -> u32 {
+            self.width * self.height
+        }
+    }
+
+    let area_of_rectangle = Rectangle {
+        width: 32,
+        height: 44,
+    };
+    println!("Area of rectangle {}", area_of_rectangle.area());
+
+    struct square {
+        length: u32,
+        width: u32,
+    }
+    impl square {
+        fn area(&self) -> u32 {
+            self.length * self.width
+        }
+        fn perimeter(&self) -> u32 {
+            (2 * self.length) + (2 * self.width)
+        }
+    }
+    let card = square {
+        length: 44,
+        width: 44,
+    };
+    println!("Area of square is {}", card.area());
+    println!("Perimeter of square {}", card.perimeter());
+
+    // trait implementation
+    trait HasArea {
+        fn area(&self) -> f64;
+    }
+
+    struct circle {
+        pi: f64,
+        radius: f64,
+    }
+
+    impl HasArea for circle {
+        fn area(&self) -> f64 {
+            self.pi * (self.radius * self.radius)
+        }
+    }
+
+    let round = circle {
+        pi: 3.14,
+        radius: 5.332,
+    };
+    println!("Area of your circle is: {}", round.area());
 }
 
+// Custom functions
 fn greet() {
     println!("Maakye ooo brothers of zion");
 }
@@ -198,3 +263,23 @@ fn print_number(n: u32) {
 fn print_numbers(a: u32, b: u32, c: f64) {
     println!("The numbers are: {} {} {}", a, b, c);
 }
+fn add_numbers(a: u32, b: u32) -> u32 {
+    a + b
+    // return a + b;
+}
+fn subt_numbers(a: i32, b: i32) -> i32 {
+    return a - b;
+}
+
+// This is how an implementation is declared
+// struct StructName {
+
+//     // fields
+
+//     }
+
+//     impl StructName {
+
+//     // methods
+
+//     }
