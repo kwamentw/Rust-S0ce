@@ -49,4 +49,85 @@ fn main() {
     name_to_age.insert("safachi", 45);
     name_to_age.insert("Kukugulu", 34);
     println!("name|age: {:?}", name_to_age);
+
+    // struct: a custom data type
+    // struct <structName> { varname: datatype, varname2: datatype, }
+    // struct let <varname>:<structname> = <structname>{<varname>:value,<varname>:value};
+    struct CustomVar {
+        n: i32,
+        a: u32,
+    }
+    struct Goods<'a> {
+        id: &'a str,
+        weight: f64,
+    }
+
+    let kwame: CustomVar = CustomVar { n: -43, a: 333 };
+    let shoes: Goods = Goods {
+        id: "NIKE",
+        weight: 34.333,
+    };
+    println!("Here are your details {} {}", kwame.n, kwame.a);
+    println!("Your {} goods weighed {}", shoes.id, shoes.weight);
+
+    // Enum ois just the same as solidity's
+    // enum <varName> {state1,state2,state3}
+    // if you want to display you renum val you have to use #[derive(Debug)] or #[derive(strum_macros::Display)]
+
+    #[derive(Debug)]
+    enum Colors {
+        Red,
+        Green,
+        Blue,
+        White,
+    }
+    let new_color: Colors = Colors::Red;
+    println!("Your current color is {:?}", new_color);
+
+    // Every variable is immutable by default use the "mut" keyword to make it mutable
+
+    // infinite loop stops when theres a break statement or a condition is met
+    let mut counter: i32 = 0;
+    loop {
+        println!("looping...{}", counter);
+        counter += 1;
+        if counter >= 5 {
+            break;
+        }
+    }
+
+    //while loop executes till a condition  is met
+    let mut b: i32 = 0;
+    while b < 5 {
+        b += 1;
+        println!("looping y'all....{}", b);
+    }
+
+    // for loops, for looping through coolections eg array,vectors etc
+    let numbers: [i32; 6] = [23, 32, 45, 65, 23, 65];
+    for element in numbers.iter() {
+        println!("Your elements are {}", element);
+    }
+    for num in &numbers {
+        println!("Your numbers are {}", num);
+    }
+    // range for loop
+    for n in 1..101 {
+        if n % 15 == 0 {
+            println!("fizzbuzz{}", n);
+        }
+    }
+
+    // looping over an iterator
+    let vec: Vec<i32> = vec![1, 2, 3];
+    for (element) in vec.into_iter() {
+        println!("Element  is {}", element);
+    }
+
+    //Predicate loop pattern
+    let mut x: Vec<i32> = vec![1, 2, 3];
+
+    while let Some(y) = x.pop() {
+        println!("y = {}", y);
+    }
 }
