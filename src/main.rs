@@ -124,10 +124,77 @@ fn main() {
         println!("Element  is {}", element);
     }
 
+    // Looping over an iterator
+    let array = [100, 200, 300, 400, 500];
+    for (index, value) in array.iter().enumerate() {
+        println!("Value at index {}: {}", index, value);
+    }
+
     //Predicate loop pattern
     let mut x: Vec<i32> = vec![1, 2, 3];
 
     while let Some(y) = x.pop() {
         println!("y = {}", y);
     }
+
+    // Match is similar to switches in other languages
+    // match value {
+    //     pattern => code,
+    //     pattern => code,
+    //     ...
+    //     _ => code, // _ is a catch-all pattern
+    //     }
+
+    let nigga: i32 = 4;
+    match nigga {
+        1 => println!("He is the man"),
+        2 => println!("he the assistant"),
+        3 => println!("he is a follower"),
+        4 => println!("He is the real niqqa"),
+        _ => println!("Don't take any of this too serious"),
+    }
+
+    enum size {
+        Big,
+        Small,
+        Medium,
+        BSM(u8, u8, u8), // tuple variant
+    }
+    let Size: size = size::BSM(0, 0, 255);
+    match Size {
+        size::Big => println!("This is a big house"),
+        size::Small => println!("This is a small house"),
+        size::Medium => println!("The size of the house is in between"),
+        size::BSM(b, s, m) => println!("BSM: {} {} {}", b, s, m),
+    }
+
+    let bottle: i32 = 3;
+    match bottle {
+        0..=5 => println!("You have drunk {} bottles", bottle),
+        _ => println!("You have either drunk more or no bottles"),
+    }
+
+    let pair: (i32, i32) = (0, -2);
+    match pair {
+        (0, y) => println!("First is 0 and other is {:?}", y),
+        (x, 0) => println!("first is {} and other is 0", x),
+        _ => println!("This didnt match the pattern expected"),
+    }
+
+    //// FUNCTIONS
+    // how functions are declared
+    // fn function_name(parameter_list) -> return_type {// code}
+    greet();
+    print_number(5233);
+    print_numbers(23, 44, 23.45333);
+}
+
+fn greet() {
+    println!("Maakye ooo brothers of zion");
+}
+fn print_number(n: u32) {
+    println!("I am printing {}", n);
+}
+fn print_numbers(a: u32, b: u32, c: f64) {
+    println!("The numbers are: {} {} {}", a, b, c);
 }
